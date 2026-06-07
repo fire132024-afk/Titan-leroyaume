@@ -5,11 +5,11 @@ import { getColor } from '../../config/bot.js';
 import { getGuildConfig } from '../../services/guildConfig.js';
 
 const STAR_LABELS = {
-    '1': '⭐ 1 — Poor',
-    '2': '⭐⭐ 2 — Below Average',
-    '3': '⭐⭐⭐ 3 — Average',
-    '4': '⭐⭐⭐⭐ 4 — Good',
-    '5': '⭐⭐⭐⭐⭐ 5 — Excellent',
+    '1': '⭐ 1 — Très mauvaise',
+    '2': '⭐⭐ 2 — Mauvaise',
+    '3': '⭐⭐⭐ 3 — Appréciable',
+    '4': '⭐⭐⭐⭐ 4 — Super',
+    '5': '⭐⭐⭐⭐⭐ 5 — Excellente !',
 };
 
 export default {
@@ -101,8 +101,8 @@ export default {
                 const logsChannel = await interaction.client.channels.fetch(guildConfig.ticketLogsChannelId).catch(() => null);
                 if (logsChannel && logsChannel.isSendable()) {
                     const feedbackEmbed = new EmbedBuilder()
-                        .setTitle('📋 Ticket Feedback Received')
-                        .setDescription(`User submitted feedback for a ticket`)
+                        .setTitle('📋 Avis sur un ticket reçu')
+                        .setDescription(`L’utilisateur a envoyé un avis pour un ticket`)
                         .setColor(getColor('info'))
                         .addFields(
                             { name: 'Ticket ID', value: `\`${channelId}\``, inline: true },
@@ -123,10 +123,10 @@ export default {
 
         // Edit the DM message to remove the select and show thanks
         const thankYouEmbed = new EmbedBuilder()
-            .setTitle('✅ Thanks for your feedback!')
-            .setDescription(`You rated your support experience **${ratingLabel}**.\n\nYour feedback has been recorded and helps us improve!`)
+            .setTitle('✅ Merci pour votre évaluation!')
+            .setDescription(`Vous avez noté votre expérience de support **${ratingLabel}**.\n\nVotre avis a été enregistré et nous aide à nous améliorer!`)
             .setColor(getColor('success'))
-            .setFooter({ text: 'Thank you for using our support system.' })
+            .setFooter({ text: 'Merci d’avoir utilisé notre système de support.' })
             .setTimestamp();
 
         await interaction.update({
