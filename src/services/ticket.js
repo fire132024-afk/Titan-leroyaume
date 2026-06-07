@@ -857,7 +857,7 @@ export async function deleteTicket(channel, deleter) {
     // Generate and send transcript if transcript channel is configured
     setTimeout(async () => {
       try {
-        logger.debug('Starting ticket deletion process', {
+        logger.debug('Début de la suppression du ticket', {
           channelId: channel.id,
           ticketId: ticketData.id
         });
@@ -867,7 +867,7 @@ export async function deleteTicket(channel, deleter) {
         try {
           attachment = await generateTranscript(channel);
           if (attachment) {
-            logger.info('Transcript generated successfully, attempting to send', {
+            logger.info('Transcription générée avec succès, tentative d’envoi en cours', {
               channelId: channel.id,
               ticketNumber: ticketData.id
             });
@@ -931,7 +931,7 @@ export async function deleteTicket(channel, deleter) {
                   files: [attachment]
                 });
 
-                logger.info('✅ Transcript sent successfully', {
+                logger.info('✅ Transcription envoyée avec succès', {
                   channelId: channel.id,
                   ticketNumber: ticketData.id,
                   transcriptChannelId: transcriptChannel.id
@@ -949,7 +949,7 @@ export async function deleteTicket(channel, deleter) {
 
         // Delete the channel (regardless of transcript success)
         try {
-          await channel.delete('Ticket deleted permanently');
+          await channel.delete('Ticket supprimé');
           logger.info('✅ Channel deleted', {
             channelId: channel.id,
             channelName: channel.name,
@@ -1040,23 +1040,23 @@ export async function unclaimTicket(channel, unclaimer) {
       const claimedField = embed.fields?.find(f => f.name === 'Claimed By');
       
       if (claimedField) {
-        claimedField.value = 'Not claimed';
+        claimedField.value = 'Non pris en charge';
       }
       
       const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
           .setCustomId('ticket_close')
-          .setLabel('Close Ticket')
+          .setLabel('Fermer ce ticket')
           .setStyle(ButtonStyle.Danger)
           .setEmoji('🔒'),
         new ButtonBuilder()
           .setCustomId('ticket_claim')
-          .setLabel('Claim')
+          .setLabel('Prendre en charge')
           .setStyle(ButtonStyle.Primary)
           .setEmoji('🙋'),
         new ButtonBuilder()
           .setCustomId('ticket_pin')
-          .setLabel('Pin')
+          .setLabel('Epingler')
           .setStyle(ButtonStyle.Secondary)
           .setEmoji('📌')
       );
@@ -1074,8 +1074,8 @@ export async function unclaimTicket(channel, unclaimer) {
     
     if (claimMessage) {
       const unclaimEmbed = createEmbed({
-        title: 'Ticket Unclaimed',
-        description: `🔓 ${unclaimer} has unclaimed this ticket!`,
+        title: 'Ticket désattribué',
+        description: `🔓 ${unclaimer} Ne prend plus en charge le ticket!`,
         color: '#f39c12'
       });
       
@@ -1085,8 +1085,8 @@ export async function unclaimTicket(channel, unclaimer) {
       });
     } else {
       const unclaimEmbed = createEmbed({
-        title: 'Ticket Unclaimed',
-        description: `🔓 ${unclaimer} has unclaimed this ticket!`,
+        title: 'Ticket désattribué',
+        description: `🔓 ${unclaimer} Ne prend plus en charge le ticket!`,
         color: '#f39c12'
       });
       
@@ -1192,8 +1192,8 @@ export async function updateTicketPriority(channel, priority, updater) {
     }
     
     const updateEmbed = createEmbed({
-      title: 'Priority Updated',
-      description: `📊 Ticket priority updated to **${priorityInfo.emoji} ${priorityInfo.label}** by ${updater}`,
+      title: 'Priorité mise à jour',
+      description: `📊 La priorité du ticket a été mise à jour sur **${priorityInfo.emoji} ${priorityInfo.label}** par ${updater}`,
       color: priorityInfo.color
     });
     
