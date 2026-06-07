@@ -211,27 +211,27 @@ export const botConfig = {
       none: {
         emoji: "⚪",
         color: "#95A5A6",
-        label: "None",
+        label: "Aucune",
       },
       low: {
         emoji: "🟢",
         color: "#2ECC71",
-        label: "Low",
+        label: "Basse",
       },
       medium: {
         emoji: "🟡",
         color: "#F1C40F",
-        label: "Medium",
+        label: "Moyenne",
       },
       high: {
         emoji: "🔴",
         color: "#E74C3C",
-        label: "High",
+        label: "Haute",
       },
       urgent: {
         emoji: "🚨",
         color: "#E91E63",
-        label: "Urgent",
+        label: "Urgente",
       },
     },
 
@@ -398,7 +398,7 @@ export const botConfig = {
     types: {
       // Built-in counter types and how each count is calculated.
       members: {
-        name: "👥 Members",
+        name: "👥 Membres",
         description: "Total members in the server",
         getCount: (guild) => guild.memberCount.toString(),
       },
@@ -409,7 +409,7 @@ export const botConfig = {
           guild.members.cache.filter((m) => m.user.bot).size.toString(),
       },
       members_only: {
-        name: "👤 Humans",
+        name: "👤 Humains",
         description: "Total human members (non-bots)",
         getCount: (guild) =>
           guild.members.cache.filter((m) => !m.user.bot).size.toString(),
