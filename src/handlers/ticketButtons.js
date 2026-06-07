@@ -181,8 +181,8 @@ const createTicketModalHandler = {
       if (result.success) {
         await interaction.editReply({
           embeds: [successEmbed(
-            'Ticket Created',
-            `Your ticket has been created in ${result.channel}!`
+            'Demande transmise!',
+            `Votre ticket a été créé dans${result.channel}!`
           )]
         });
       } else {
@@ -211,7 +211,7 @@ const closeTicketHandler = {
       const permissionCheck = await checkTicketPermissionWithTimeout(
         interaction,
         client,
-        'close this ticket',
+        'Fermer ce ticket',
         { allowTicketCreator: true },
         2000 // 2 second timeout for permission checks
       );
@@ -228,7 +228,7 @@ const closeTicketHandler = {
 
       const modal = new ModalBuilder()
         .setCustomId('ticket_close_modal')
-        .setTitle('Close Ticket');
+        .setTitle('Fermer le ticket');
 
       const reasonInput = new TextInputBuilder()
         .setCustomId('reason')
@@ -291,12 +291,12 @@ const closeTicketModalHandler = {
 
       if (result.success) {
         await interaction.editReply({
-          embeds: [successEmbed('Ticket Closed', 'This ticket has been closed.')],
+          embeds: [successEmbed('Ticket Closed', 'Votre demande est maintenant close')],
           flags: MessageFlags.Ephemeral
         });
       } else {
         await interaction.editReply({
-          embeds: [errorEmbed('Error', result.error || 'Failed to close ticket.')],
+          embeds: [errorEmbed('Error', result.error || 'Erreur lors de la fermeture')],
           flags: MessageFlags.Ephemeral
         });
       }
@@ -383,7 +383,7 @@ const priorityTicketHandler = {
       const permissionCheck = await checkTicketPermissionWithTimeout(
         interaction,
         client,
-        'change ticket priority',
+        'Chnager la priorité du ticket',
         {},
         2000
       );
@@ -414,7 +414,7 @@ const priorityTicketHandler = {
       
       if (result.success) {
         await interaction.editReply({
-          embeds: [successEmbed('Priority Updated', `Ticket priority set to ${priority}.`)],
+          embeds: [successEmbed('Priority Updated', `Priorité du ticket définie sur ${priority}.`)],
           flags: MessageFlags.Ephemeral
         });
       } else {
@@ -491,8 +491,8 @@ const pinTicketHandler = {
 
         await interaction.editReply({
           embeds: [createEmbed({
-            title: '📌 Ticket Unpinned',
-            description: 'This ticket has been unpinned and moved back to normal position.',
+            title: '📌 Ticket désépinglé',
+            description: 'Ce ticket a été désépinglé et remis à sa position normale.',
             color: 0x95A5A6
           })],
           flags: MessageFlags.Ephemeral
@@ -514,8 +514,8 @@ const pinTicketHandler = {
 
         await interaction.editReply({
           embeds: [createEmbed({
-            title: '📌 Ticket Pinned',
-            description: 'This ticket has been pinned to the top of the category.',
+            title: '📌 Ticket éplinglé',
+            description: 'Ce ticket a été épinglé en haut de la catégorie.',
             color: 0x3498db
           })],
           flags: MessageFlags.Ephemeral
@@ -594,7 +594,7 @@ const unclaimTicketHandler = {
       
       if (result.success) {
         await interaction.editReply({
-          embeds: [successEmbed('Ticket Unclaimed', 'You have successfully unclaimed this ticket!')],
+          embeds: [successEmbed('Ticket désattribué Vous avez retiré l’attribution de ce ticket avec succès !')],
           flags: MessageFlags.Ephemeral
         });
       } else {
