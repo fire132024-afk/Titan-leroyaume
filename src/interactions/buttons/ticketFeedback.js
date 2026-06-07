@@ -5,11 +5,11 @@ import { getColor } from '../../config/bot.js';
 import { getGuildConfig } from '../../services/guildConfig.js';
 
 const STAR_LABELS = {
-    '1': '⭐ 1 — Poor',
-    '2': '⭐⭐ 2 — Below Average',
-    '3': '⭐⭐⭐ 3 — Average',
-    '4': '⭐⭐⭐⭐ 4 — Good',
-    '5': '⭐⭐⭐⭐⭐ 5 — Excellent',
+    '1': '⭐ 1 — Très mauvaise',
+    '2': '⭐⭐ 2 — Mauvaise',
+    '3': '⭐⭐⭐ 3 — Médiocre',
+    '4': '⭐⭐⭐⭐ 4 — Super',
+    '5': '⭐⭐⭐⭐⭐ 5 — Excellente !',
 };
 
 const feedbackHandler = {
@@ -98,8 +98,8 @@ const feedbackHandler = {
                 const logsChannel = await interaction.client.channels.fetch(guildConfig.ticketLogsChannelId).catch(() => null);
                 if (logsChannel && logsChannel.isSendable()) {
                     const feedbackEmbed = new EmbedBuilder()
-                        .setTitle('📋 Ticket Feedback Received')
-                        .setDescription('User submitted feedback for a ticket')
+                        .setTitle('📋 Evaluation de ticket')
+                        .setDescription('L’utilisateur a soumis un avis pour un ticket.')
                         .setColor(getColor('info'))
                         .addFields(
                             { name: 'Ticket ID', value: `\`${channelId}\``, inline: true },
@@ -121,16 +121,16 @@ const feedbackHandler = {
         await interaction.update({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle('✅ Thanks for your feedback!')
-                    .setDescription(`You rated your support experience **${ratingLabel}**.\n\nYour feedback has been recorded and helps us improve!`)
+                    .setTitle('✅ Merci pour votre retour !')
+                    .setDescription(`Tu as noté l'équipe **${ratingLabel}**.\n\nVotre avis a été enregistré et nous aide à nous améliorer!`)
                     .setColor(getColor('success'))
-                    .setFooter({ text: 'Thank you for using our support system.' })
+                    .setFooter({ text: 'Merci de nous avoir contacté' })
                     .setTimestamp(),
             ],
             components: [],
         });
 
-        logger.info('Ticket feedback submitted', {
+        logger.info('Avis sur le ticket reçu.', {
             guildId,
             channelId,
             userId: interaction.user.id,
@@ -146,8 +146,8 @@ const declineHandler = {
         await interaction.update({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle('👋 No problem!')
-                    .setDescription('You can always reach out again if you need further support.')
+                    .setTitle('👋 Aucun problème!')
+                    .setDescription('Recontactez-nous si vous avez de nouveau besoin de notre équipe !')
                     .setColor(getColor('default')),
             ],
             components: [],
