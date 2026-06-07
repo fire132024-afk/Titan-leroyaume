@@ -131,13 +131,13 @@ const createTicketHandler = {
       
       const modal = new ModalBuilder()
         .setCustomId('create_ticket_modal')
-        .setTitle('Create a Ticket');
+        .setTitle('Contacter notre équipe!');
 
       const reasonInput = new TextInputBuilder()
         .setCustomId('reason')
-        .setLabel('**Pourquoi créez-vous ce ticket ?**')
+        .setLabel('Pourquoi créez-vous ce ticket ?')
         .setStyle(TextInputStyle.Paragraph)
-        .setPlaceholder('**Décrivez votre problème...**')
+        .setPlaceholder('Décrivez votre problème...')
         .setRequired(true)
         .setMaxLength(1000);
 
@@ -232,7 +232,7 @@ const closeTicketHandler = {
 
       const reasonInput = new TextInputBuilder()
         .setCustomId('reason')
-        .setLabel('Reason for closing (optional)')
+        .setLabel('Raison de la fermeture (facultatif)')
         .setStyle(TextInputStyle.Paragraph)
         .setPlaceholder('Add an optional reason for closing this ticket...')
         .setRequired(false)
