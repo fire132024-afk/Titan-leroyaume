@@ -739,7 +739,7 @@ function escapeHtml(text) {
 
 async function generateTranscript(channel) {
   try {
-    logger.debug('Generating transcript for channel', {
+    logger.debug('Génération de la transcription pour le salon.', {
       channelId: channel.id,
       channelName: channel.name
     });
@@ -803,7 +803,7 @@ ${rows}
     const buffer = Buffer.from(html, 'utf8');
     const attachment = new AttachmentBuilder(buffer, { name: `ticket-${channel.id}.html` });
 
-    logger.info('✅ Successfully generated transcript', {
+    logger.info('✅ Transcription générée avec succès.', {
       channelId: channel.id,
       channelName: channel.name,
       messageCount: messages.length,
@@ -831,8 +831,8 @@ export async function deleteTicket(channel, deleter) {
     }
     
     const deleteEmbed = createEmbed({
-      title: 'Ticket Deleted',
-      description: `🗑️ This ticket will be permanently deleted in ${TICKET_DELETE_DELAY_SECONDS} seconds.`,
+      title: 'Ticket supprimé',
+      description: `🗑️ Ce ticket sera définitivement supprimé dans ${TICKET_DELETE_DELAY_SECONDS} secondes.`,
       color: '#e74c3c',
       footer: { text: `Ticket ID: ${ticketData.id}` }
     });
