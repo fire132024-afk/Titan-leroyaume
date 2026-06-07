@@ -298,7 +298,7 @@ export async function closeTicket(channel, closer, reason = 'No reason provided'
         if (ticketCreator) {
           const dmEmbed = createEmbed({
             title: '🎫 Votre demande a été cloturée',
-            description: `Votre ticket **${channel.name}** est maintenant fermé.\n\n**Reason:** ${reason}\n**Fermé par:** ${closer.tag}\n**a:** <t:${Math.floor(Date.now() / 1000)}:F>\n\nThank you for using our support system! If you have any further questions, feel free to create a new ticket.`,
+            description: `Votre ticket **${channel.name}** est maintenant fermé.\n\n**Reason:** ${reason}\n**Fermé par:** ${closer.tag}\n**Le :** <t:${Math.floor(Date.now() / 1000)}:F>\n\nThank you for using our support system! If you have any further questions, feel free to create a new ticket.`,
             color: '#e74c3c',
             footer: { text: `Ticket ID: ${ticketData.id}` }
           });
