@@ -121,8 +121,8 @@ const createTicketHandler = {
         return await interaction.reply({
           embeds: [
             errorEmbed(
-              '🎫 Ticket Limit Reached',
-              `You have reached the maximum number of open tickets (${maxTicketsPerUser}).\n\nPlease close your existing tickets before creating a new one.\n\n**Current Tickets:** ${currentTicketCount}/${maxTicketsPerUser}`
+              '🎫 Limite de tickets atteinte',
+              `**Vous avez atteint le nombre maximum de tickets ouverts** (${maxTicketsPerUser}).\n\n**Veuillez fermer vos tickets existants avant d’en créer un nouveau.**\n\n****Tickets en cours**:** ${currentTicketCount}/${maxTicketsPerUser}`
             )
           ],
           flags: MessageFlags.Ephemeral
