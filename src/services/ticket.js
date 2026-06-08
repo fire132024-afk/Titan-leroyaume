@@ -162,12 +162,12 @@ export async function createTicket(guild, member, categoryId, reason = 'No reaso
     
     const embed = createEmbed({
       title: `Ticket #${ticketNumber}`,
-      description: `${member.toString()}, thanks for creating a ticket!\n\n**Reason:** ${reason}\n**Priority:** ${priorityInfo.emoji} ${priorityInfo.label}`,
+      description: `${member.toString()}, Merci d'avoir contacté notre équipe!\n\n**Raison:** ${reason}\n**Priority:** ${priorityInfo.emoji} ${priorityInfo.label}`,
       color: priorityInfo.color,
       fields: [
-        { name: 'Status', value: '🟢 Ouvert', inline: true },
-        { name: 'Claimed By', value: 'Non pris en charge', inline: true },
-        { name: 'Created', value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: true },
+        { name: 'Statut', value: '🟢 Ouvert', inline: true },
+        { name: 'Pris en charge par', value: 'Non pris en charge', inline: true },
+        { name: 'Créer', value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: true },
       ],
     });
     
@@ -1182,7 +1182,7 @@ export async function updateTicketPriority(channel, priority, updater) {
       
       const updatedEmbed = createEmbed({
         title: embed.title || 'Ticket',
-        description: embed.description?.split('\n**Priority:**')[0] + `\n**Priority:** ${priorityInfo.emoji} ${priorityInfo.label}`,
+        description: embed.description?.split('\n**Priorité:**')[0] + `\n**Priorité:** ${priorityInfo.emoji} ${priorityInfo.label}`,
         color: priorityInfo.color,
         fields: embed.fields || [],
         footer: embed.footer
