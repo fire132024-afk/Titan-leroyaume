@@ -517,7 +517,7 @@ export async function claimTicket(channel, claimer) {
     
     const claimEmbed = createEmbed({
       title: 'Ticket pris en charge',
-      description: `🎉 ${claimer} Pas de panique, notre équipe est la pour toi !`,
+      description: `🎉 C'est ${claimer} qui va s'occuper de ta demande !`,
       color: '#2ecc71'
     });
     
@@ -1037,7 +1037,7 @@ export async function unclaimTicket(channel, unclaimer) {
     
     if (ticketMessage) {
       const embed = ticketMessage.embeds[0];
-      const claimedField = embed.fields?.find(f => f.name === 'Claimed By');
+      const claimedField = embed.fields?.find(f => f.name === 'Pris en charde par :');
       
       if (claimedField) {
         claimedField.value = 'Non pris en charge';
