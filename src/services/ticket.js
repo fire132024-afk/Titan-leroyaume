@@ -162,7 +162,7 @@ export async function createTicket(guild, member, categoryId, reason = 'No reaso
     
     const embed = createEmbed({
       title: `Ticket #${ticketNumber}`,
-      description: `${member.toString()}, Merci d'avoir contacté notre équipe!\n\n**Raison:** ${reason}\n**Priority:** ${priorityInfo.emoji} ${priorityInfo.label}`,
+      description: `${member.toString()}, Merci d'avoir contacté notre équipe!\n\n**Raison:** ${reason}\n**Priorité:** ${priorityInfo.emoji} ${priorityInfo.label}`,
       color: priorityInfo.color,
       fields: [
         { name: 'Statut', value: '🟢 Ouvert', inline: true },
