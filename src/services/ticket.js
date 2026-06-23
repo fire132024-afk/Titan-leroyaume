@@ -1040,7 +1040,7 @@ export async function unclaimTicket(channel, unclaimer) {
       const claimedField = embed.fields?.find(f => f.name === 'Pris en charde par :');
       
       if (claimedField) {
-        claimedField.value = 'Non pris en charge';
+        claimedField.value = `<@${interaction.user.id}>`;
       }
       
       const row = new ActionRowBuilder().addComponents(
