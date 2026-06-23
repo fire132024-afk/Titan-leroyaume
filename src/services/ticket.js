@@ -166,7 +166,7 @@ export async function createTicket(guild, member, categoryId, reason = 'No reaso
       color: priorityInfo.color,
       fields: [
         { name: 'Statut', value: '🟢 Ouvert', inline: true },
-        { name: 'Pris en charge par', value: `<@${interaction.user.id}>`, inline: true },
+        { name: 'Pris en charge par', value: <@${interaction.user.id}>, inline: true },
         { name: 'Créer', value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: true },
       ],
     });
