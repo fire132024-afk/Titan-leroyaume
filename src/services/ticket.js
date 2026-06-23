@@ -659,7 +659,7 @@ export async function reopenTicket(channel, reopener) {
           .setStyle(ButtonStyle.Danger)
           .setEmoji('🔒'),
         new ButtonBuilder()
-          .setCustomId('ticket_claim')
+          .setCustomId(`<@${interaction.user.id}>`)
           .setLabel(ticketData.claimedBy ? 'Pris en charge' : 'Claim')
           .setStyle(ticketData.claimedBy ? ButtonStyle.Secondary : ButtonStyle.Primary)
           .setEmoji('🙋')
