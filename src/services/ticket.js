@@ -660,7 +660,7 @@ export async function reopenTicket(channel, reopener) {
           .setEmoji('🔒'),
         new ButtonBuilder()
           .setCustomId(`<@${interaction.user.id}>`)
-          .setLabel(ticketData.claimedBy ? 'Pris en charge' : 'Claim')
+          .setLabel(ticketData.claimedBy ? '`<@${interaction.user.id}>`' : 'Claim')
           .setStyle(ticketData.claimedBy ? ButtonStyle.Secondary : ButtonStyle.Primary)
           .setEmoji('🙋')
           .setDisabled(!!ticketData.claimedBy),
