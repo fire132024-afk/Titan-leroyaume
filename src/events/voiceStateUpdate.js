@@ -22,7 +22,31 @@ export default {
     name: 'voiceStateUpdate',
     async execute(oldState, newState, client) {
         if (newState.member.user.bot) return;
+        // Notification lorsqu'un joueur rejoint le salon "Attente aide"
+const ATTENTE_AIDE_ID = '1518638572041932924';
+const SALON_NOTIF_ID = '1477293329703112903';
+const ROLE_STAFF_ID = '1518284600034459781';
 
+if (
+    newState.channelId === ATTENTE_AIDE_ID &&
+    oldState.channelId !== ATTENTE_AIDE_ID
+) {
+    const notifChannel = client.channels.cache.get(SALON_NOTIF_ID);
+
+    if (notifChannel) {
+        await notifChannel.send({
+            content: `<@&${ROLE_STAFF_ID}>`,
+            embeds: [{
+                title: '🔔 Demande d\'assistance',
+                description: `${newState.member} attend actuellement dans le salon vocal **${newState.channel.name}**.`,
+                color: 0xF1C40F,
+                timestamp: new Date()
+            }]
+        });
+    }
+}
+
+    
         const guildId = newState.guild.id;
         const userId = newState.member.id;
         const cooldownKey = `${guildId}-${userId}`;
