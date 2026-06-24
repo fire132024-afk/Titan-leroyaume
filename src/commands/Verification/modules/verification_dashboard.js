@@ -328,7 +328,7 @@ export default {
                     if (channel) {
                         try {
                             const verifyEmbed = new EmbedBuilder()
-                                .setTitle('✅ Server Verification')
+                                .setTitle('✅ Vérification')
                                 .setDescription(cfg.message || botConfig.verification.defaultMessage)
                                 .setColor(getColor('success'));
 
@@ -462,7 +462,7 @@ async function handleChannel(selectInteraction, rootInteraction, cfg, guildId, c
         if (cfg.enabled !== false) {
             try {
                 const verifyEmbed = new EmbedBuilder()
-                    .setTitle('✅ Server Verification')
+                    .setTitle('✅ Vérification')
                     .setDescription(cfg.message || botConfig.verification.defaultMessage)
                     .setColor(getColor('success'));
 
