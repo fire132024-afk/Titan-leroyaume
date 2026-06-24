@@ -37,7 +37,7 @@ if (
         await notifChannel.send({
             content: `<@&${ROLE_STAFF_ID}>`,
             embeds: [{
-                title: '🔔 Demande d\'assistance',
+                title: '🔔 Demande de support',
                 description: `${newState.member} attend actuellement dans le salon vocal **${newState.channel.name}**.`,
                 color: 0xF1C40F,
                 timestamp: new Date()
